@@ -16,7 +16,7 @@ Sans action de build + déploiement, la branche `main` ne suffit pas.
 
 ### 3) Base URL incorrecte pour GitHub Pages
 Sur GitHub Pages, l’app est servie dans un sous-dossier :
-```
+```text
 https://fullstackflow-dev.github.io/Portfolio-react-tailwind-white-image/
 ```
 Vite doit connaître cette base pour charger correctement les assets (JS/CSS).
@@ -29,7 +29,7 @@ Vite doit connaître cette base pour charger correctement les assets (JS/CSS).
    Un workflow build + déploiement publie automatiquement le dossier `dist/`.
 
 2. **Mise à jour de `base` dans Vite**  
-   `base` est réglé sur le nom du repo GitHub Pages pour éviter les erreurs de chemins d’assets.
+   `base` est conditionnel : GitHub Pages utilise le sous-dossier du repo, tandis que Vercel et le dev local restent sur `/`.
 
 ---
 
@@ -85,7 +85,8 @@ jobs:
    - **Output Directory** : `dist`
 5. Clique **Deploy**
 
-✅ Vercel détecte tout automatiquement.
+✅ Vercel détecte tout automatiquement.  
+⚠️ Important : assure-toi que `base` reste `/` pour Vercel (valeur par défaut), sinon les chemins d’assets seront cassés.
 
 ---
 
@@ -94,7 +95,9 @@ jobs:
 Dans `vite.config.js` :
 ```js
 export default defineConfig({
-  base: '/Portfolio-react-tailwind-white-image/',
+  base: process.env.GITHUB_ACTIONS
+    ? '/Portfolio-react-tailwind-white-image/'
+    : '/',
   plugins: [react()],
 })
 ```
