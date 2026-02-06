@@ -10,49 +10,35 @@
  */
 
 function Hero() {
-  /**
-   * Fonction appelée quand on clique sur "Télécharger CV"
-   * Pour l'instant, affiche juste une alerte
-   * Plus tard, tu pourras la remplacer par un vrai téléchargement
-   */
-  const handleDownloadCV = () => {
-    alert('CV en cours de finalisation — revenez bientôt !')
-  }
-
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-8 pt-24 pb-16 relative">
       {/* Effet de lumière verte en arrière-plan */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-accent/8 to-transparent pointer-events-none" />
-      
-      {/* 
-        IMAGE DE PROFIL
-        Remplace "/votre-photo.jpg" par le chemin de ton image
-        L'image doit être dans le dossier public/ du projet React
-      */}
-      <img 
-        src="/votre-photo.jpg" 
-        alt="Photo de Merphy Mademba" 
-        className="w-40 h-40 rounded-full object-cover border-3 border-accent shadow-[0_0_40px_rgba(0,229,160,0.35)] mb-8 animate-fade-in-down relative z-10"
-      />
-      
+
+      {/* Avatar minimal */}
+      <div className="w-40 h-40 rounded-full bg-gradient-to-br from-accent/40 to-accent/5 border-3 border-accent shadow-[0_0_40px_rgba(0,229,160,0.35)] mb-8 flex items-center justify-center text-4xl font-bold text-accent relative z-10">
+        MM
+      </div>
+
       {/* Badge "Disponible" */}
       <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/25 rounded-full px-4 py-2 text-xs text-accent font-mono mb-8 animate-fade-in-down">
         <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-slow" />
         Disponible — Dakar, Sénégal
       </div>
-      
+
       {/* Nom principal */}
       <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         Merphy
         <br />
         <em className="text-accent">Mademba</em>
       </h1>
-      
+
       {/* Description */}
       <p className="text-text-muted text-base max-w-xl font-light mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-        Développeur Full Stack passionné par la cybersécurité, l'ingénierie de données et l'intelligence artificielle. Je construis des solutions qui sont à la fois sécurisées, performantes et intelligentes.
+        Développeur Full Stack passionné par la cybersécurité, l'ingénierie de données et l'intelligence artificielle. Je
+        conçois des produits fiables qui transforment des besoins métiers en expériences digitales solides.
       </p>
-      
+
       {/* Tags de compétences */}
       <div className="flex flex-wrap justify-center gap-2 mb-11 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
         {['Full Stack', 'Cybersécurité', 'DevOps', 'Data Engineering', 'IA / ML', 'Linux'].map((skill) => (
@@ -64,23 +50,26 @@ function Hero() {
           </span>
         ))}
       </div>
-      
+
       {/* Boutons CTA */}
       <div className="flex flex-col md:flex-row items-center gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
         {/* Bouton principal */}
         <a href="#projects" className="btn-primary">
           Voir mes projets →
         </a>
-        
+
         {/* Bouton CV */}
-        <button onClick={handleDownloadCV} className="btn-secondary">
-          ⬇ Télécharger mon CV
-        </button>
+        <a
+          href="mailto:merphy97@gmail.com?subject=Demande%20de%20CV"
+          className="btn-secondary"
+        >
+          ⬇ Demander mon CV
+        </a>
       </div>
-      
+
       {/* Note sous les boutons */}
       <span className="font-mono text-xs text-text-muted mt-3 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-        // CV en cours de finalisation
+        // Disponible pour missions freelance & collaborations
       </span>
     </section>
   )
