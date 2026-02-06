@@ -1,324 +1,117 @@
-# 🚀 Portfolio React + Tailwind CSS
+# 📄 Déploiement Portfolio React + Tailwind (GitHub Pages & Vercel)
 
-Portfolio de **Merphy Mademba** — Version React avec Tailwind CSS
-
----
-
-## 📁 Structure du projet
-
-```
-portfolio-react/
-├── src/
-│   ├── components/           ← Composants React réutilisables
-│   │   ├── Navigation.jsx    ← Menu avec hamburger mobile
-│   │   ├── Hero.jsx          ← Section d'accueil
-│   │   └── index.js          ← Autres composants (About, Skills, etc.)
-│   ├── App.jsx               ← Composant principal
-│   ├── main.jsx              ← Point d'entrée React
-│   └── index.css             ← Styles Tailwind + custom
-├── index.html                ← HTML de base
-├── package.json              ← Dépendances et scripts
-├── vite.config.js            ← Configuration Vite (build tool)
-├── tailwind.config.js        ← Configuration Tailwind
-├── postcss.config.js         ← Configuration PostCSS
-└── .gitignore                ← Fichiers à ignorer dans Git
-```
+Ce document explique **pourquoi le portfolio ne s’affichait pas** sur GitHub Pages et **comment corriger** le déploiement, puis détaille **les étapes de déploiement** sur GitHub Pages **et** Vercel.
 
 ---
 
-## 🛠️ Technologies utilisées
+## ✅ Problèmes identifiés
 
-| Tech | Pourquoi | Ce que ça fait |
-|---|---|---|
-| **React** | Framework UI moderne | Crée des composants réutilisables et gère l'état |
-| **Tailwind CSS** | Framework CSS utilitaire | Style avec des classes (`bg-blue-500`, `flex`, etc.) |
-| **Vite** | Build tool ultra-rapide | Compile et optimise le code pour production |
-| **PostCSS** | Processeur CSS | Transforme Tailwind en CSS standard |
+### 1) Aucun build publié sur GitHub Pages
+Le projet utilise **Vite**, qui génère un build statique dans le dossier `dist/`.  
+Sans build, GitHub Pages n’a rien à servir → page blanche ou 404.
+
+### 2) GitHub Pages ne servait pas `dist/`
+GitHub Pages doit pointer sur un dossier **généré** (`dist/`) via une action (ou une branche dédiée).  
+Sans action de build + déploiement, la branche `main` ne suffit pas.
+
+### 3) Base URL incorrecte pour GitHub Pages
+Sur GitHub Pages, l’app est servie dans un sous-dossier :
+```
+https://fullstackflow-dev.github.io/Portfolio-react-tailwind-white-image/
+```
+Vite doit connaître cette base pour charger correctement les assets (JS/CSS).
 
 ---
 
-## 📦 Installation (sur ton ordinateur)
+## ✅ Correctifs appliqués
 
-### 1️⃣ Prérequis
+1. **Ajout d’un workflow GitHub Actions**  
+   Un workflow build + déploiement publie automatiquement le dossier `dist/`.
 
-Installe **Node.js** (version 18 ou plus) :
-- Windows/macOS : [nodejs.org](https://nodejs.org/)
-- Linux : `sudo apt install nodejs npm`
-
-Vérifie l'installation :
-```bash
-node --version   # Doit afficher v18.x ou plus
-npm --version    # Doit afficher 9.x ou plus
-```
+2. **Mise à jour de `base` dans Vite**  
+   `base` est réglé sur le nom du repo GitHub Pages pour éviter les erreurs de chemins d’assets.
 
 ---
 
-### 2️⃣ Installation du projet
+## 🚀 Déploiement GitHub Pages (automatique)
 
-```bash
-# 1. Clone ou télécharge le projet
-cd portfolio-react
+### Prérequis
+- Le dépôt GitHub doit s’appeler **Portfolio-react-tailwind-white-image**
+- GitHub Pages doit être activé dans **Settings → Pages**
+- **Source** = GitHub Actions
 
-# 2. Installe les dépendances
-npm install
+### Fonctionnement
+Le workflow GitHub Actions build l’app et publie `dist/` sur GitHub Pages à chaque push sur `main`.
 
-# ⏳ Ça va prendre 1-2 minutes
-# npm va télécharger React, Tailwind, Vite, etc.
+Fichier utilisé : `.github/workflows/deploy-pages.yml`
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - uses: actions/deploy-pages@v4
 ```
+
+✅ Résultat : GitHub Pages sert automatiquement la dernière version compilée.
 
 ---
 
-### 3️⃣ Lancer en mode développement
+## ✅ Déploiement Vercel (recommandé)
 
-```bash
-npm run dev
-```
-
-**Résultat :**
-```
-  VITE v5.0.8  ready in 342 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-```
-
-Ouvre **http://localhost:5173** dans ton navigateur.
-
-**Le Hot Reload est activé** : quand tu modifies un fichier, la page se rafraîchit automatiquement ! 🔥
-
----
-
-### 4️⃣ Compiler pour production
-
-```bash
-npm run build
-```
-
-**Résultat :**
-- Crée un dossier `dist/` avec les fichiers optimisés
-- Minifie le code (réduit la taille)
-- Optimise les images et fonts
-- Prêt à déployer
-
----
-
-## 🚀 Déployer sur Vercel
-
-### Option 1 : Via GitHub (recommandé)
-
-1. **Pousse ton code sur GitHub** :
-```bash
-git init
-git add .
-git commit -m "Initial commit - React portfolio"
-git remote add origin https://github.com/TON_NOM/portfolio-react.git
-git push -u origin main
-```
-
-2. **Sur Vercel** :
-   - Va sur [vercel.com](https://vercel.com)
-   - Clique sur **"New Project"**
-   - Sélectionne ton repo GitHub `portfolio-react`
-   - **Framework Preset** : Vite
+### Étapes rapides
+1. Va sur https://vercel.com
+2. **New Project**
+3. Connecte ton repo GitHub
+4. Configuration :
+   - **Framework** : Vite
    - **Build Command** : `npm run build`
    - **Output Directory** : `dist`
-   - Clique sur **Deploy**
+5. Clique **Deploy**
 
-✅ Vercel détecte automatiquement Vite et configure tout.
-
----
-
-### Option 2 : Via Vercel CLI
-
-```bash
-# Installe Vercel CLI
-npm install -g vercel
-
-# Déploie
-vercel
-
-# Suis les instructions
-```
+✅ Vercel détecte tout automatiquement.
 
 ---
 
-## 🎨 Comment ça marche ? React + Tailwind expliqué
+## 🔧 Mise à jour Vite (base URL)
 
-### **Avant (HTML pur) :**
-
-```html
-<div class="card">
-  <h3>Titre</h3>
-  <p>Description</p>
-</div>
-
-<style>
-.card {
-  background: #111418;
-  border: 1px solid #1e2a3a;
-  border-radius: 10px;
-  padding: 1.6rem;
-}
-</style>
-```
-
-**Problème :** Si tu as 10 cartes, tu répètes 10 fois le HTML.
-
----
-
-### **Avec React :**
-
-```jsx
-// Composant Card réutilisable
-function Card({ title, description }) {
-  return (
-    <div className="card">
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </div>
-  )
-}
-
-// Utilisation
-<Card title="Titre 1" description="Description 1" />
-<Card title="Titre 2" description="Description 2" />
-```
-
-**Avantage :** Tu écris le code une fois, tu le réutilises partout.
-
----
-
-### **Avec Tailwind :**
-
-```jsx
-function Card({ title, description }) {
-  return (
-    <div className="bg-bg-card border border-border rounded-xl p-6">
-      <h3 className="text-lg font-semibold">{title}</h3>
-      <p className="text-text-muted text-sm">{description}</p>
-    </div>
-  )
-}
-```
-
-**Avantage :**
-- Pas besoin d'écrire du CSS personnalisé
-- Classes réutilisables (`bg-bg-card`, `text-lg`, etc.)
-- Le CSS non utilisé est automatiquement supprimé (bundle plus léger)
-
----
-
-## 🔧 Personnalisation
-
-### Modifier les couleurs
-
-Ouvre `tailwind.config.js` :
-
+Dans `vite.config.js` :
 ```js
-colors: {
-  'accent': '#00e5a0',  // Change la couleur principale
-  'bg-dark': '#0a0c0f', // Change le fond
-}
-```
-
-Sauvegarde → Tailwind se met à jour automatiquement.
-
----
-
-### Ajouter un nouveau composant
-
-1. Crée `src/components/NouveauComposant.jsx` :
-
-```jsx
-function NouveauComposant() {
-  return (
-    <section className="max-w-6xl mx-auto px-8 py-24">
-      <h2 className="text-4xl font-bold">Mon nouveau composant</h2>
-    </section>
-  )
-}
-
-export default NouveauComposant
-```
-
-2. Importe-le dans `App.jsx` :
-
-```jsx
-import NouveauComposant from './components/NouveauComposant'
-
-function App() {
-  return (
-    <div>
-      <Navigation />
-      <Hero />
-      <NouveauComposant />  {/* ← Ajoute ici */}
-    </div>
-  )
-}
+export default defineConfig({
+  base: '/Portfolio-react-tailwind-white-image/',
+  plugins: [react()],
+})
 ```
 
 ---
 
-## 🐛 Problèmes courants
+## ✅ Résultat attendu
 
-### `npm install` échoue
+✅ GitHub Pages :  
+https://fullstackflow-dev.github.io/Portfolio-react-tailwind-white-image/
 
-**Solution :**
-```bash
-# Supprime le dossier node_modules et package-lock.json
-rm -rf node_modules package-lock.json
-
-# Réinstalle
-npm install
-```
+✅ Vercel :  
+https://nom-du-projet.vercel.app
 
 ---
 
-### Port 5173 déjà utilisé
-
-**Solution :**
-```bash
-# Lance sur un autre port
-npm run dev -- --port 3000
-```
-
----
-
-### Tailwind ne fonctionne pas
-
-**Vérifie que :**
-1. `tailwind.config.js` pointe vers les bons fichiers :
-   ```js
-   content: ["./index.html", "./src/**/*.{js,jsx}"]
-   ```
-2. `index.css` contient les directives Tailwind :
-   ```css
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
-   ```
-
----
-
-## 📚 Ressources pour apprendre
-
-| Resource | Lien |
-|---|---|
-| **React docs** | [react.dev](https://react.dev) |
-| **Tailwind docs** | [tailwindcss.com/docs](https://tailwindcss.com/docs) |
-| **Vite docs** | [vitejs.dev](https://vitejs.dev) |
-
----
-
-## 🎯 Prochaines étapes
-
-- [ ] Compléter tous les composants (About, Skills, etc.)
-- [ ] Ajouter les vraies données des projets
-- [ ] Connecter le formulaire de contact à un service
-- [ ] Ajouter des animations supplémentaires
-- [ ] Optimiser les images
-- [ ] Ajouter Google Analytics
-
----
-
-**Questions ?** Reviens me voir, je t'aide ! 🚀
+Si tu veux, je peux aussi ajouter :
+- un badge de déploiement
+- un script `deploy`
+- un guide de maintenance
