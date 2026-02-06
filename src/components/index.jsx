@@ -222,6 +222,10 @@ export function Projects() {
         "Plateforme e-commerce full stack avec checkout sécurisé, gestion des stocks et back-office multi-boutiques.",
       tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       highlight: true,
+      image: {
+        src: '/portfolio-preview.svg',
+        alt: 'Aperçu du projet Portfolio React Tailwind',
+      },
       demo: '#contact',
       repo: 'https://github.com/FullStackFlow-dev',
     },
@@ -263,6 +267,17 @@ export function Projects() {
                 ⭐ Projet vedette
               </div>
             </>
+          )}
+          {project.image && (
+            <div className="mb-5">
+              <img
+                src={project.image.src}
+                alt={project.image.alt}
+                width={360}
+                height={270}
+                className="w-full max-w-[360px] h-auto object-cover rounded-lg border border-border"
+              />
+            </div>
           )}
           <h3 className="font-display text-2xl mb-3">{project.title}</h3>
           <p className="text-text-muted text-sm mb-4">{project.description}</p>

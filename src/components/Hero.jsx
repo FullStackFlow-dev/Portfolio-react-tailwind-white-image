@@ -16,7 +16,7 @@ function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-accent/8 to-transparent pointer-events-none" />
 
       {/* Avatar minimal */}
-      <div className="w-40 h-40 rounded-full bg-gradient-to-br from-accent/40 to-accent/5 border-3 border-accent shadow-[0_0_40px_rgba(0,229,160,0.35)] mb-8 flex items-center justify-center text-4xl font-bold text-accent relative z-10">
+      <div className="w-[250px] h-[250px] rounded-full bg-gradient-to-br from-accent/40 to-accent/5 border-3 border-accent shadow-[0_0_40px_rgba(0,229,160,0.35)] mb-8 flex items-center justify-center text-5xl font-bold text-accent relative z-10">
         MM
       </div>
 
@@ -38,6 +38,29 @@ function Hero() {
         Développeur Full Stack passionné par la cybersécurité, l'ingénierie de données et l'intelligence artificielle. Je
         conçois des produits fiables qui transforment des besoins métiers en expériences digitales solides.
       </p>
+
+      {/* Proposition de valeur */}
+      <div className="grid gap-3 md:grid-cols-3 max-w-4xl w-full mb-10 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+        {[
+          {
+            title: 'Architecture scalable',
+            text: 'Stacks modernes, code propre, performance mesurable.',
+          },
+          {
+            title: 'Sécurité by design',
+            text: 'Threat modeling, hardening API, bonnes pratiques OWASP.',
+          },
+          {
+            title: 'Delivery rapide',
+            text: 'Prototypage → CI/CD → production fiable.',
+          },
+        ].map((item) => (
+          <div key={item.title} className="card text-left">
+            <h3 className="font-mono text-xs text-accent uppercase tracking-wider mb-2">{item.title}</h3>
+            <p className="text-xs text-text-muted">{item.text}</p>
+          </div>
+        ))}
+      </div>
 
       {/* Tags de compétences */}
       <div className="flex flex-wrap justify-center gap-2 mb-11 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
