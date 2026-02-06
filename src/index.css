@@ -1,15 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════
+   GOOGLE FONTS
+   ═══════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Sora:wght@300;400;500;600&display=swap');
+
+/* ═══════════════════════════════════════════════════════════════
    TAILWIND DIRECTIVES
    Importe les styles de base, composants et utilitaires de Tailwind
    ═══════════════════════════════════════════════════════════════ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ═══════════════════════════════════════════════════════════════
-   GOOGLE FONTS
-   ═══════════════════════════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Sora:wght@300;400;500;600&display=swap');
 
 /* ═══════════════════════════════════════════════════════════════
    CUSTOM BASE STYLES
