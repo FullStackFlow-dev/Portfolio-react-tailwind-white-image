@@ -39,6 +39,29 @@ function Hero() {
         conçois des produits fiables qui transforment des besoins métiers en expériences digitales solides.
       </p>
 
+      {/* Proposition de valeur */}
+      <div className="grid gap-3 md:grid-cols-3 max-w-4xl w-full mb-10 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+        {[
+          {
+            title: 'Architecture scalable',
+            text: 'Stacks modernes, code propre, performance mesurable.',
+          },
+          {
+            title: 'Sécurité by design',
+            text: 'Threat modeling, hardening API, bonnes pratiques OWASP.',
+          },
+          {
+            title: 'Delivery rapide',
+            text: 'Prototypage → CI/CD → production fiable.',
+          },
+        ].map((item) => (
+          <div key={item.title} className="card text-left">
+            <h3 className="font-mono text-xs text-accent uppercase tracking-wider mb-2">{item.title}</h3>
+            <p className="text-xs text-text-muted">{item.text}</p>
+          </div>
+        ))}
+      </div>
+
       {/* Tags de compétences */}
       <div className="flex flex-wrap justify-center gap-2 mb-11 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
         {['Full Stack', 'Cybersécurité', 'DevOps', 'Data Engineering', 'IA / ML', 'Linux'].map((skill) => (
