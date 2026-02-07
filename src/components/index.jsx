@@ -60,7 +60,7 @@ export function Skills() {
     {
       icon: '⚙️',
       title: 'DevOps & Cloud',
-      skills: ['Docker', 'GitHub Actions', 'Linux', 'Nginx', 'Vercel/Netlify'],
+      skills: ['Docker', 'Git', 'GitHub', 'GitHub Actions', 'Linux', 'Nginx', 'Vercel/Netlify'],
     },
     {
       icon: '📊',
@@ -303,6 +303,54 @@ export function Projects() {
           </div>
         </div>
       ))}
+    </section>
+  )
+}
+
+/**
+ * OPEN SOURCE COMPONENT
+ * Contributions et badges GitHub
+ */
+export function OpenSource() {
+  const badges = [
+    {
+      title: 'Pull Shark',
+      description: 'Pull requests mergées avec succès.',
+      href: 'https://github.com/users/FullStackFlow-dev/achievements/pull-shark',
+      image: 'https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png',
+    },
+    {
+      title: 'Pair Extraordinaire',
+      description: 'Coauthoring sur des pull requests mergées.',
+      href: 'https://github.com/users/FullStackFlow-dev/achievements/pair-extraordinaire',
+      image: 'https://github.githubassets.com/images/modules/profile/achievements/pair-extraordinaire-default.png',
+    },
+  ]
+
+  return (
+    <section id="open-source" className="max-w-6xl mx-auto px-8 py-24">
+      <div className="section-label">// Open source</div>
+      <h2 className="section-title">Contributions open-source</h2>
+      <div className="divider" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {badges.map((badge) => (
+          <a
+            key={badge.title}
+            href={badge.href}
+            target="_blank"
+            rel="noreferrer"
+            className="card flex gap-5 items-center transition hover:border-accent/60"
+          >
+            <div className="w-16 h-16 rounded-full bg-white/5 border border-border flex items-center justify-center">
+              <img src={badge.image} alt={badge.title} className="w-12 h-12 object-contain" />
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold mb-1">{badge.title}</h4>
+              <p className="text-xs text-text-muted">{badge.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
     </section>
   )
 }
