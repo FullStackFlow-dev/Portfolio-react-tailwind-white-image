@@ -11,89 +11,98 @@
 
 function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-8 pt-24 pb-16 relative">
-      {/* Effet de lumière verte en arrière-plan */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-accent/8 to-transparent pointer-events-none" />
+    <section className="min-h-screen flex items-center px-8 pt-28 pb-16 relative">
+      {/* Effet de lumière rouge sombre en arrière-plan */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full bg-gradient-radial from-accent/10 to-transparent pointer-events-none" />
 
-      {/* Avatar minimal */}
-      <div className="w-[250px] h-[250px] rounded-full bg-gradient-to-br from-accent/40 to-accent/5 border-3 border-accent shadow-[0_0_40px_rgba(0,229,160,0.35)] mb-8 flex items-center justify-center text-5xl font-bold text-accent relative z-10">
-        MM
-      </div>
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-12 relative z-10">
+        {/* Cadre photo */}
+        <div className="w-[400px] h-[300px] rounded-2xl bg-gradient-to-br from-accent/30 to-accent/5 border border-accent/50 shadow-[0_0_40px_rgba(244,63,94,0.35)] overflow-hidden">
+          <img
+            src="/profile-photo.svg"
+            alt="Photo de Merphy Mademba"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
 
-      {/* Badge "Disponible" */}
-      <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/25 rounded-full px-4 py-2 text-xs text-accent font-mono mb-8 animate-fade-in-down">
-        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-slow" />
-        Disponible — Dakar, Sénégal
-      </div>
-
-      {/* Nom principal */}
-      <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-        Merphy
-        <br />
-        <em className="text-accent">Mademba</em>
-      </h1>
-
-      {/* Description */}
-      <p className="text-text-muted text-base max-w-xl font-light mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-        Développeur Full Stack passionné par la cybersécurité, l'ingénierie de données et l'intelligence artificielle. Je
-        conçois des produits fiables qui transforment des besoins métiers en expériences digitales solides.
-      </p>
-
-      {/* Proposition de valeur */}
-      <div className="grid gap-3 md:grid-cols-3 max-w-4xl w-full mb-10 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-        {[
-          {
-            title: 'Architecture scalable',
-            text: 'Stacks modernes, code propre, performance mesurable.',
-          },
-          {
-            title: 'Sécurité by design',
-            text: 'Threat modeling, hardening API, bonnes pratiques OWASP.',
-          },
-          {
-            title: 'Delivery rapide',
-            text: 'Prototypage → CI/CD → production fiable.',
-          },
-        ].map((item) => (
-          <div key={item.title} className="card text-left">
-            <h3 className="font-mono text-xs text-accent uppercase tracking-wider mb-2">{item.title}</h3>
-            <p className="text-xs text-text-muted">{item.text}</p>
+        <div className="flex-1 text-center md:text-left">
+          {/* Badge "Disponible" */}
+          <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/25 rounded-full px-4 py-2 text-xs text-accent font-mono mb-6 animate-fade-in-down">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-slow" />
+            Disponible — Dakar, Sénégal
           </div>
-        ))}
-      </div>
 
-      {/* Tags de compétences */}
-      <div className="flex flex-wrap justify-center gap-2 mb-11 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-        {['Full Stack', 'Cybersécurité', 'DevOps', 'Data Engineering', 'IA / ML', 'Linux'].map((skill) => (
-          <span
-            key={skill}
-            className="font-mono text-xs text-text-muted bg-bg-card border border-border px-3 py-1.5 rounded"
-          >
-            {skill}
+          {/* Nom principal */}
+          <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            Merphy
+            <br />
+            <em className="text-accent">Mademba</em>
+          </h1>
+
+          {/* Description */}
+          <p className="text-text-muted text-base max-w-xl font-light mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            Développeur Full Stack passionné par la cybersécurité, l'ingénierie de données et l'intelligence artificielle. Je
+            conçois des produits fiables qui transforment des besoins métiers en expériences digitales solides.
+          </p>
+
+          {/* Proposition de valeur */}
+          <div className="grid gap-3 md:grid-cols-3 mb-10 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            {[
+              {
+                title: 'Architecture scalable',
+                text: 'Stacks modernes, code propre, performance mesurable.',
+              },
+              {
+                title: 'Sécurité by design',
+                text: 'Threat modeling, hardening API, bonnes pratiques OWASP.',
+              },
+              {
+                title: 'Delivery rapide',
+                text: 'Prototypage → CI/CD → production fiable.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="card text-left">
+                <h3 className="font-mono text-xs text-accent uppercase tracking-wider mb-2">{item.title}</h3>
+                <p className="text-xs text-text-muted">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Tags de compétences */}
+          <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-11 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            {['Full Stack', 'Cybersécurité', 'DevOps', 'Data Engineering', 'IA / ML', 'Linux'].map((skill) => (
+              <span
+                key={skill}
+                className="font-mono text-xs text-text-muted bg-bg-card border border-border px-3 py-1.5 rounded"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          {/* Boutons CTA */}
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+            {/* Bouton principal */}
+            <a href="#projects" className="btn-primary">
+              Voir mes projets →
+            </a>
+
+            {/* Bouton CV */}
+            <a
+              href="mailto:merphy97@gmail.com?subject=Demande%20de%20CV"
+              className="btn-secondary"
+            >
+              ⬇ Demander mon CV
+            </a>
+          </div>
+
+          {/* Note sous les boutons */}
+          <span className="font-mono text-xs text-text-muted mt-3 block opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+            // Disponible pour missions freelance & collaborations
           </span>
-        ))}
+        </div>
       </div>
-
-      {/* Boutons CTA */}
-      <div className="flex flex-col md:flex-row items-center gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-        {/* Bouton principal */}
-        <a href="#projects" className="btn-primary">
-          Voir mes projets →
-        </a>
-
-        {/* Bouton CV */}
-        <a
-          href="mailto:merphy97@gmail.com?subject=Demande%20de%20CV"
-          className="btn-secondary"
-        >
-          ⬇ Demander mon CV
-        </a>
-      </div>
-
-      {/* Note sous les boutons */}
-      <span className="font-mono text-xs text-text-muted mt-3 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-        // Disponible pour missions freelance & collaborations
-      </span>
     </section>
   )
 }
