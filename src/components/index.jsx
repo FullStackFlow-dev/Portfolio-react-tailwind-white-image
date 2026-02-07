@@ -273,10 +273,10 @@ export function Projects() {
               <img
                 src={project.image.src}
                 alt={project.image.alt}
-                width={400}
-                height={300}
-                className="w-[400px] h-[300px] object-cover rounded-lg border border-border"
-              />
+                width={360}
+                height={270}
+                className="w-full max-w-[360px] h-auto object-cover rounded-lg border border-border"
+                />
             </div>
           )}
           <h3 className="font-display text-2xl mb-3">{project.title}</h3>

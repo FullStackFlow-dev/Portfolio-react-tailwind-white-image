@@ -16,7 +16,7 @@ function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-accent/8 to-transparent pointer-events-none" />
 
       {/* Avatar minimal */}
-      <div className="w-40 h-40 rounded-full bg-gradient-to-br from-accent/40 to-accent/5 border-3 border-accent shadow-[0_0_40px_rgba(0,229,160,0.35)] mb-8 flex items-center justify-center text-4xl font-bold text-accent relative z-10">
+      <div className="w-[250px] h-[250px] rounded-full bg-gradient-to-br from-accent/40 to-accent/5 border-3 border-accent shadow-[0_0_40px_rgba(0,229,160,0.35)] mb-8 flex items-center justify-center text-5xl font-bold text-accent relative z-10">
         MM
       </div>
 
