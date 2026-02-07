@@ -1,5 +1,7 @@
 # 📄 Déploiement Portfolio React + Tailwind (GitHub Pages & Vercel)
 
+[![Deploy to GitHub Pages](https://github.com/FullStackFlow-dev/Portfolio-react-tailwind-white-image/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/FullStackFlow-dev/Portfolio-react-tailwind-white-image/actions/workflows/deploy-pages.yml)
+
 Ce document explique **pourquoi le portfolio ne s’affichait pas** sur GitHub Pages et **comment corriger** le déploiement, puis détaille **les étapes de déploiement** sur GitHub Pages **et** Vercel.
 
 ---
@@ -90,6 +92,35 @@ jobs:
 
 ---
 
+## 🧰 Script de déploiement (GitHub Pages)
+
+Un script `deploy` est disponible pour publier manuellement le contenu de `dist/` sur la branche `gh-pages` :
+
+```bash
+npm run deploy
+```
+
+Ce script lance d’abord un build puis utilise `gh-pages` via `npx`. Assure-toi d’avoir les droits d’écriture sur le dépôt.
+
+---
+
+## 🛠️ Guide de maintenance
+
+- **Mise à jour des dépendances**
+  - Vérifie régulièrement les versions avec `npm outdated`.
+  - Mets à jour de manière incrémentale et teste avec `npm run build`.
+- **Changement de contenu**
+  - Modifie les sections dans `src/components/`.
+  - Vérifie le rendu local avec `npm run dev`.
+- **Contrôle des assets**
+  - Place les images statiques dans `public/`.
+  - Vérifie que les URLs sont correctes après build (répertoire `dist/`).
+- **Surveillance du déploiement**
+  - Suis le workflow GitHub Actions pour GitHub Pages.
+  - Vérifie les logs Vercel/Netlify après chaque déploiement.
+
+---
+
 ## 🔧 Mise à jour Vite (base URL)
 
 Dans `vite.config.js` :
@@ -114,7 +145,9 @@ https://nom-du-projet.vercel.app
 
 ---
 
-Si tu veux, je peux aussi ajouter :
-- un badge de déploiement
-- un script `deploy`
-- un guide de maintenance
+## ✅ Modifications récentes (prod)
+
+- Refonte du header avec navigation centrée, CTA “Connectons-nous” et icônes de réseaux sociaux.
+- Ajout d’icônes sociales en haut et en bas de page pour une cohérence visuelle.
+- Ajout d’un bouton “Retour en haut” flottant.
+- Harmonisation de la couleur de fond globale pour matcher le nouveau header.

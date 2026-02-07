@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SocialLinks from './SocialLinks'
 
 /**
  * NAVIGATION COMPONENT
@@ -49,13 +50,35 @@ function Navigation() {
   ]
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-bg-dark/75 backdrop-blur-xl border-b border-border">
-      <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
-        {/* Logo */}
-        <a href="#" className="font-mono text-sm text-accent tracking-wider">
-          merphdev
+    <nav className="fixed top-0 w-full z-50 bg-bg-dark/90 backdrop-blur-xl border-b border-border">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+        {/* Logo principal */}
+        <a href="#top" className="font-display text-lg text-text-primary tracking-wide">
+          Merph<span className="text-accent">Dev</span>
         </a>
-        
+
+        {/* Liens principaux (desktop) */}
+        <ul className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="text-text-muted text-xs font-medium tracking-widest uppercase transition-colors hover:text-accent"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Actions rapides (desktop) */}
+        <div className="hidden md:flex items-center gap-4">
+          <SocialLinks className="gap-3" />
+          <a href="#contact" className="btn-secondary">
+            Connectons-nous
+          </a>
+        </div>
+
         {/* Bouton hamburger (mobile uniquement) */}
         <button
           onClick={toggleMenu}
@@ -67,19 +90,17 @@ function Navigation() {
           <span className={`w-6 h-0.5 bg-accent transition-all ${isOpen ? 'opacity-0' : ''}`} />
           <span className={`w-6 h-0.5 bg-accent transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
-        
-        {/* Liens de navigation */}
-        <ul className={`
-          fixed md:relative top-[70px] md:top-0 left-0 right-0
-          md:flex md:gap-8
-          bg-bg-dark/98 md:bg-transparent
-          backdrop-blur-xl md:backdrop-blur-none
-          flex-col md:flex-row items-center
-          py-8 md:py-0 gap-6 md:gap-8
-          border-b md:border-b-0 border-border
+      </div>
+
+      {/* Menu mobile */}
+      <div
+        className={`
+          md:hidden bg-bg-dark/98 backdrop-blur-xl border-t border-border
           transition-all duration-300
-          ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full md:translate-y-0 opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto'}
-        `}>
+          ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}
+        `}
+      >
+        <ul className="flex flex-col items-center py-6 gap-5">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -92,6 +113,12 @@ function Navigation() {
             </li>
           ))}
         </ul>
+        <div className="flex flex-col items-center gap-4 pb-6">
+          <SocialLinks className="gap-4" />
+          <a href="#contact" onClick={closeMenu} className="btn-secondary">
+            Connectons-nous
+          </a>
+        </div>
       </div>
     </nav>
   )

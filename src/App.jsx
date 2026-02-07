@@ -14,7 +14,7 @@ import { About, Skills, Certifications, Education, Projects, Contact, Footer } f
  */
 function App() {
   return (
-    <div className="min-h-screen bg-bg-dark">
+    <div id="top" className="min-h-screen bg-bg-dark">
       {/* Navigation fixe */}
       <Navigation />
       
@@ -31,6 +31,15 @@ function App() {
       
       {/* Pied de page */}
       <Footer />
+
+      {/* Bouton retour en haut */}
+      <a
+        href="#top"
+        className="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-accent text-bg-dark flex items-center justify-center shadow-[0_0_20px_rgba(0,229,160,0.35)] hover:-translate-y-1 transition-transform"
+        aria-label="Retour en haut"
+      >
+        ↑
+      </a>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SocialLinks from './SocialLinks'
 
 // ═══════════════════════════════════════════════════════════════
 // COMPOSANTS DU PORTFOLIO
@@ -222,6 +223,10 @@ export function Projects() {
         "Plateforme e-commerce full stack avec checkout sécurisé, gestion des stocks et back-office multi-boutiques.",
       tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       highlight: true,
+      image: {
+        src: '/portfolio-preview.svg',
+        alt: 'Aperçu du projet Portfolio React Tailwind',
+      },
       demo: '#contact',
       repo: 'https://github.com/FullStackFlow-dev',
     },
@@ -263,6 +268,17 @@ export function Projects() {
                 ⭐ Projet vedette
               </div>
             </>
+          )}
+          {project.image && (
+            <div className="mb-5">
+              <img
+                src={project.image.src}
+                alt={project.image.alt}
+                width={360}
+                height={270}
+                className="w-full max-w-[360px] h-auto object-cover rounded-lg border border-border"
+              />
+            </div>
           )}
           <h3 className="font-display text-2xl mb-3">{project.title}</h3>
           <p className="text-text-muted text-sm mb-4">{project.description}</p>
@@ -442,29 +458,9 @@ export function Footer() {
   return (
     <footer className="border-t border-border py-10 text-center">
       <div className="mb-4 font-display text-lg">Retrouvez-moi sur les réseaux</div>
-      <div className="flex justify-center gap-6 mb-4">
-        <a
-          href="https://linkedin.com/in/merph-dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/FullStackFlow-dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
-        >
-          GitHub
-        </a>
-        <a
-          href="mailto:merphy97@gmail.com"
-          className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
-        >
-          Email
-        </a>
+      {/* Icônes de réseaux sociaux */}
+      <div className="flex justify-center mb-4">
+        <SocialLinks className="gap-4" />
       </div>
       <p className="font-mono text-xs text-text-muted">
         © 2025 Merphy Mademba. Tous droits réservés.

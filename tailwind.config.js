@@ -10,7 +10,7 @@ export default {
     extend: {
       // Couleurs personnalisées pour correspondre au design original
       colors: {
-        'bg-dark': '#0a0c0f',           // Fond principal
+        'bg-dark': '#0b0f14',           // Fond principal
         'bg-card': '#111418',           // Fond des cartes
         'accent': '#00e5a0',            // Vert néon
         'text-primary': '#e2e8f0',      // Texte blanc cassé
