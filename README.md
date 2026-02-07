@@ -141,6 +141,6 @@ export default defineConfig({
 https://fullstackflow-dev.github.io/Portfolio-react-tailwind-white-image/
 
 ✅ Vercel :  
-https://nom-du-projet.vercel.app
+https://portfolio-react-tailwin.netlify.app/
 
 ---
