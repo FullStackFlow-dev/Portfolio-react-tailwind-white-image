@@ -144,3 +144,10 @@ https://fullstackflow-dev.github.io/Portfolio-react-tailwind-white-image/
 https://portfolio-react-tailwin.netlify.app/
 
 ---
+
+## ✅ Modifications récentes (prod)
+
+- Refonte du header avec navigation centrée, CTA “Connectons-nous” et icônes de réseaux sociaux.
+- Ajout d’icônes sociales en haut et en bas de page pour une cohérence visuelle.
+- Ajout d’un bouton “Retour en haut” flottant.
+- Harmonisation de la couleur de fond globale pour matcher le nouveau header.
