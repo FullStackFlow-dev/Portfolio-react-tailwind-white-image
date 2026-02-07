@@ -1,6 +1,6 @@
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
-import { About, Skills, Certifications, Education, Projects, Contact, Footer } from './components/index.jsx'
+import { About, Skills, Certifications, Education, Projects, OpenSource, Contact, Footer } from './components/index.jsx'
 
 /**
  * APP - Composant principal du portfolio
@@ -26,6 +26,7 @@ function App() {
         <Certifications />
         <Education />
         <Projects />
+        <OpenSource />
         <Contact />
       </main>
       

@@ -45,6 +45,7 @@ function Navigation() {
     { href: '#certs', label: 'Certificats' },
     { href: '#education', label: 'Formation' },
     { href: '#projects', label: 'Projets' },
+    { href: '#open-source', label: 'Open source' },
     { href: '#contact', label: 'Contact' },
   ]
 
