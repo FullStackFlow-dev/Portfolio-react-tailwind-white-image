@@ -11,13 +11,14 @@
 
 function Hero() {
   return (
-    <section className="min-h-screen flex items-center px-8 pt-28 pb-16 relative">
-      {/* Effet de lumière rouge sombre en arrière-plan */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full bg-gradient-radial from-accent/10 to-transparent pointer-events-none" />
+    <section className="min-h-screen flex items-center px-8 pt-28 pb-16 relative overflow-hidden">
+      {/* Arrière-plan inspiré du moodboard (sans image binaire) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0b0f1f] via-[#111827] to-[#0f172a]" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),_transparent_55%)]" aria-hidden="true" />
 
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-12 relative z-10">
         {/* Cadre photo */}
-        <div className="w-[400px] h-[300px] rounded-2xl bg-gradient-to-br from-accent/30 to-accent/5 border border-accent/50 shadow-[0_0_40px_rgba(244,63,94,0.35)] overflow-hidden">
+        <div className="w-[360px] h-[450px] rounded-2xl bg-gradient-to-br from-accent/30 to-accent/5 border border-accent/50 shadow-[0_0_40px_rgba(244,63,94,0.35)] overflow-hidden">
           <img
             src="/profile-photo.svg"
             alt="Photo de Merphy Mademba"
