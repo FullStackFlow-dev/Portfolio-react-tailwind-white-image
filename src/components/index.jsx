@@ -276,7 +276,7 @@ export function Projects() {
                 width={360}
                 height={270}
                 className="w-full max-w-[360px] h-auto object-cover rounded-lg border border-border"
-              />
+                />
             </div>
           )}
           <h3 className="font-display text-2xl mb-3">{project.title}</h3>
