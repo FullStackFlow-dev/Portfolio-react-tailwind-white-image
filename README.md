@@ -121,6 +121,16 @@ Ce script lance d’abord un build puis utilise `gh-pages` via `npx`. Assure-toi
 
 ---
 
+## 🧾 Modifications récentes (portfolio)
+
+- **Hero** : mise en page en deux colonnes avec la photo à gauche et les textes à droite, cadre rectangulaire 400x300.  
+- **Réseaux sociaux** : icônes visibles en haut (LinkedIn, GitHub, Mail, X, Instagram) + rappel en pied de page.  
+- **Bouton** : retour du bouton “Connectons-nous” dans la navigation.  
+- **Certificats** : liens de vérification + PDFs disponibles dans `public/certificates/`.  
+- **Thème** : fond rouge noir et accents rouges pour une identité plus forte.  
+
+---
+
 ## 🔧 Mise à jour Vite (base URL)
 
 Dans `vite.config.js` :

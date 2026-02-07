@@ -10,12 +10,12 @@ export default {
     extend: {
       // Couleurs personnalisées pour correspondre au design original
       colors: {
-        'bg-dark': '#0f172a',           // Fond principal
-        'bg-card': '#111418',           // Fond des cartes
-        'accent': '#00e5a0',            // Vert néon
+        'bg-dark': '#120406',           // Fond principal (rouge noir)
+        'bg-card': '#1b0a0d',           // Fond des cartes
+        'accent': '#f43f5e',            // Accent rouge
         'text-primary': '#e2e8f0',      // Texte blanc cassé
         'text-muted': '#64748b',        // Texte gris
-        'border': '#1e2a3a',            // Bordures
+        'border': '#3a1416',            // Bordures
       },
       // Polices personnalisées
       fontFamily: {

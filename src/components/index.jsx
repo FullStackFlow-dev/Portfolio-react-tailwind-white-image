@@ -116,27 +116,19 @@ export function Certifications() {
   const certifications = [
     {
       icon: '🤖',
-      title: 'AI Fluency',
+      title: 'AI Fluency: Framework & Foundations',
       issuer: 'Anthropic',
       description: "Fondations IA, prompts avancés et cas d'usage business.",
+      verifyUrl: 'https://verify.skilljar.com/c/4jhmio9wftz8',
+      pdfUrl: '/certificates/ai-fluency-framework-foundations.pdf',
     },
     {
-      icon: '🛡️',
-      title: 'Cybersecurity Essentials',
-      issuer: 'Cisco Networking Academy',
-      description: 'Bases de la cybersécurité, gestion des risques et bonnes pratiques.',
-    },
-    {
-      icon: '☁️',
-      title: 'Cloud & DevOps',
-      issuer: 'Google Cloud Skills Boost',
-      description: 'Déploiements cloud, CI/CD et automatisation des environnements.',
-    },
-    {
-      icon: '📊',
-      title: 'Data Analytics',
-      issuer: 'IBM SkillsBuild',
-      description: 'Analyse de données, storytelling et dashboards interactifs.',
+      icon: '🧠',
+      title: 'Claude 101',
+      issuer: 'Anthropic',
+      description: 'Fondamentaux Claude, bonnes pratiques et cas concrets.',
+      verifyUrl: 'https://verify.skilljar.com/c/fkgp8rqfsiie',
+      pdfUrl: '/certificates/claude-101.pdf',
     },
   ]
 
@@ -155,6 +147,24 @@ export function Certifications() {
               <h4 className="text-sm font-semibold mb-1">{cert.title}</h4>
               <p className="font-mono text-xs text-accent mb-2">{cert.issuer}</p>
               <p className="text-xs text-text-muted">{cert.description}</p>
+              <div className="mt-3 flex flex-wrap gap-3 text-xs font-mono">
+                <a
+                  href={cert.verifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-muted hover:text-accent transition-colors"
+                >
+                  Vérifier ↗
+                </a>
+                <a
+                  href={cert.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-muted hover:text-accent transition-colors"
+                >
+                  PDF ↗
+                </a>
+              </div>
             </div>
           </div>
         ))}
@@ -502,32 +512,29 @@ export function Contact() {
  * Pied de page avec liens sociaux
  */
 export function Footer() {
+  const socialLinks = [
+    { href: 'https://linkedin.com/in/merph-dev', label: 'LinkedIn' },
+    { href: 'https://github.com/FullStackFlow-dev', label: 'GitHub' },
+    { href: 'mailto:merphy97@gmail.com', label: 'Mail' },
+    { href: 'https://x.com/', label: 'X' },
+    { href: 'https://instagram.com/', label: 'Instagram' },
+  ]
+
   return (
     <footer className="border-t border-border py-10 text-center">
       <div className="mb-4 font-display text-lg">Retrouvez-moi sur les réseaux</div>
       <div className="flex justify-center gap-6 mb-4">
-        <a
-          href="https://linkedin.com/in/merph-dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/FullStackFlow-dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
-        >
-          GitHub
-        </a>
-        <a
-          href="mailto:merphy97@gmail.com"
-          className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
-        >
-          Email
-        </a>
+        {socialLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
       </div>
       <p className="font-mono text-xs text-text-muted">
         © 2025 Merphy Mademba. Tous droits réservés.
