@@ -230,14 +230,37 @@ export function Projects() {
       title: 'ArtéNova Shop',
       description:
         "Plateforme e-commerce full stack avec checkout sécurisé, gestion des stocks et back-office multi-boutiques.",
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      tags: ['React', 'E-commerce', 'Stripe', 'UX/UI'],
       highlight: true,
       image: {
         src: '/portfolio-preview.svg',
-        alt: 'Aperçu du projet Portfolio React Tailwind',
+        alt: 'Aperçu du projet ArtéNova Shop',
       },
-      demo: '#contact',
-      repo: 'https://github.com/FullStackFlow-dev',
+      links: [
+        {
+          label: 'Voir le projet',
+          href: 'https://artenova-shoponline-git-verc-e319a8-fullstackflow-devs-projects.vercel.app/',
+          primary: true,
+        },
+      ],
+    },
+    {
+      title: 'NexusDev Blog',
+      description:
+        "Blog tech orienté portfolio avec articles, sections projets et expérience utilisateur immersive.",
+      tags: ['React', 'Vercel', 'Blog', 'Design'],
+      highlight: false,
+      image: {
+        src: '/portfolio-preview.svg',
+        alt: 'Aperçu du projet NexusDev Blog',
+      },
+      links: [
+        {
+          label: 'Voir le projet',
+          href: 'https://nexus-dev-blog-tech-portfolio.vercel.app/',
+          primary: true,
+        },
+      ],
     },
     {
       title: 'SecureOps Monitor',
@@ -245,17 +268,19 @@ export function Projects() {
         'Dashboard temps réel pour la surveillance des logs et alertes sécurité sur infrastructure cloud.',
       tags: ['Next.js', 'Elastic', 'Docker', 'Grafana'],
       highlight: false,
-      demo: '#contact',
-      repo: 'https://github.com/FullStackFlow-dev',
-    },
-    {
-      title: 'DataPulse Pipeline',
-      description:
-        'Pipeline data automatisé pour nettoyer, enrichir et visualiser les KPIs marketing.',
-      tags: ['Python', 'Airflow', 'PostgreSQL', 'Metabase'],
-      highlight: false,
-      demo: '#contact',
-      repo: 'https://github.com/FullStackFlow-dev',
+      links: [
+        {
+          label: 'Demander une démo',
+          href: '#contact',
+          primary: false,
+        },
+        {
+          label: 'GitHub',
+          href: 'https://github.com/FullStackFlow-dev',
+          primary: false,
+          external: true,
+        },
+      ],
     },
   ]
 
@@ -283,10 +308,10 @@ export function Projects() {
               <img
                 src={project.image.src}
                 alt={project.image.alt}
-                width={360}
-                height={270}
-                className="w-full max-w-[360px] h-auto object-cover rounded-lg border border-border"
-                />
+                width={720}
+                height={420}
+                className="w-full max-w-[560px] h-auto object-cover rounded-lg border border-border"
+              />
             </div>
           )}
           <h3 className="font-display text-2xl mb-3">{project.title}</h3>
@@ -298,18 +323,18 @@ export function Projects() {
               </span>
             ))}
           </div>
-          <div className="flex gap-3">
-            <a href={project.demo} className="text-xs text-accent hover:underline">
-              ↗ Demander une démo
-            </a>
-            <a
-              href={project.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-accent hover:underline"
-            >
-              ↗ GitHub
-            </a>
+          <div className="flex flex-wrap gap-3">
+            {project.links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                className={link.primary ? 'btn-primary text-xs px-5 py-2' : 'btn-secondary text-xs px-5 py-2'}
+              >
+                ↗ {link.label}
+              </a>
+            ))}
           </div>
         </div>
       ))}
@@ -372,7 +397,7 @@ export function OpenSource() {
 export function Contact() {
   const [status, setStatus] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const formspreeId = import.meta.env.VITE_FORMSPREE_ID
+  const formspreeId = import.meta.env.VITE_FORMSPREE_ID || 'mdadyejk'
   const formAction = formspreeId ? `https://formspree.io/f/${formspreeId}` : null
 
   const handleSubmit = async (e) => {
@@ -513,31 +538,68 @@ export function Contact() {
  */
 export function Footer() {
   const socialLinks = [
-    { href: 'https://linkedin.com/in/merph-dev', label: 'LinkedIn' },
-    { href: 'https://github.com/FullStackFlow-dev', label: 'GitHub' },
-    { href: 'mailto:merphy97@gmail.com', label: 'Mail' },
-    { href: 'https://x.com/', label: 'X' },
-    { href: 'https://instagram.com/', label: 'Instagram' },
+    {
+      href: 'https://x.com/MMademba67105',
+      label: 'X',
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="w-4 h-4">
+          <path
+            fill="currentColor"
+            d="M3 2.5h4.7l4.1 5.7 4.8-5.7H21l-6.8 7.9 7.3 10.1h-4.7l-4.7-6.3-5.4 6.3H3.1l7.3-8.3L3 2.5Zm4.1 2.2 9.2 12.5h1.7L8.9 4.7H7.1Z"
+          />
+        </svg>
+      ),
+    },
+    {
+      href: 'https://discord.com/channels/974519864045756446/1046312630626820187',
+      label: 'Discord',
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="w-4 h-4">
+          <path
+            fill="currentColor"
+            d="M19.54 3.43A18.1 18.1 0 0 0 15.55 2a12.3 12.3 0 0 0-.6 1.26 16.5 16.5 0 0 0-4.9 0A12.3 12.3 0 0 0 9.45 2a18.1 18.1 0 0 0-4 1.43C3.47 6.44 2.88 9.4 3.07 12.33a18.4 18.4 0 0 0 5.64 2.88 13.5 13.5 0 0 0 1.2-1.96 11.3 11.3 0 0 1-1.89-.9c.16-.12.32-.25.47-.38a13.3 13.3 0 0 0 11.02 0c.15.13.31.26.47.38-.6.35-1.23.66-1.9.9a13.5 13.5 0 0 0 1.2 1.96 18.4 18.4 0 0 0 5.64-2.88c.26-3.74-.45-6.67-2.38-8.9ZM9.7 11.75c-.83 0-1.5-.76-1.5-1.7s.66-1.7 1.5-1.7 1.5.76 1.5 1.7-.67 1.7-1.5 1.7Zm4.6 0c-.83 0-1.5-.76-1.5-1.7s.66-1.7 1.5-1.7 1.5.76 1.5 1.7-.66 1.7-1.5 1.7Z"
+          />
+        </svg>
+      ),
+    },
+    {
+      href: 'https://m.facebook.com/Merph-dev',
+      label: 'Facebook',
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="w-4 h-4">
+          <path
+            fill="currentColor"
+            d="M13.5 9.5H16l-.4 2.9h-2.1V22h-3.1v-9.6H8.6V9.5h1.8V7.8c0-2.5 1.5-3.8 3.8-3.8 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6v1.2Z"
+          />
+        </svg>
+      ),
+    },
   ]
 
   return (
     <footer className="border-t border-border py-10 text-center">
       <div className="mb-4 font-display text-lg">Retrouvez-moi sur les réseaux</div>
-      <div className="flex justify-center gap-6 mb-4">
+      <div className="flex justify-center gap-6 mb-6">
         {socialLinks.map((link) => (
           <a
             key={link.label}
             href={link.href}
             target={link.href.startsWith('http') ? '_blank' : undefined}
             rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
+            className="flex items-center gap-2 font-mono text-xs text-text-muted hover:text-accent transition-colors"
           >
+            {link.icon}
             {link.label}
           </a>
         ))}
       </div>
+      <div className="flex justify-center mb-4">
+        <a href="#top" className="btn-secondary text-xs px-5 py-2">
+          ↑ Retour en haut
+        </a>
+      </div>
       <p className="font-mono text-xs text-text-muted">
-        © 2025 Merphy Mademba. Tous droits réservés.
+        © 2026 Merphy Mademba. Tous droits réservés.
       </p>
     </footer>
   )

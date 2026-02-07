@@ -14,7 +14,7 @@ import { About, Skills, Certifications, Education, Projects, OpenSource, Contact
  */
 function App() {
   return (
-    <div className="min-h-screen bg-bg-dark">
+    <div id="top" className="min-h-screen bg-bg-dark">
       {/* Navigation fixe */}
       <Navigation />
       
