@@ -1,9 +1,17 @@
 # 📄 Déploiement Portfolio React + Tailwind (GitHub Pages & Vercel)
 
 [![Deploy to GitHub Pages](https://github.com/FullStackFlow-dev/Portfolio-react-tailwind-white-image/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/FullStackFlow-dev/Portfolio-react-tailwind-white-image/actions/workflows/deploy-pages.yml)
+![Pair Extraordinaire](https://img.shields.io/badge/Achievement-Pair%20Extraordinaire-green)
+![Pull Shark](https://img.shields.io/badge/Achievement-Pull%20Shark-blue)
 
 Ce document explique **pourquoi le portfolio ne s’affichait pas** sur GitHub Pages et **comment corriger** le déploiement, puis détaille **les étapes de déploiement** sur GitHub Pages **et** Vercel.
+---
+## 🚀 Déploiement
 
+**Platform :** Netlify  
+*URL :* https://portfolio-react-tailwin.netlify.app  
+*CI/CD :* Automatique via netlify.yml  
+*Workflow :* CodeX → PR → Review → Merge → Deploy
 ---
 
 ## ✅ Problèmes identifiés
